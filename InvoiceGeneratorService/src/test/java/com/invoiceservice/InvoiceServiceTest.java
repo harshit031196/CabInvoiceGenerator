@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import exception.InvoiceServiceException;
 import myrides.Ride;
 
 
@@ -38,5 +39,16 @@ public class InvoiceServiceTest {
 		Ride[] rides = { new Ride(5.0, 10), new Ride(0.3, 1), new Ride(10.0, 20) };
 		double fare = cabInvoiceService.calculateTotalFare(rides);
 		assertEquals(185.0, fare, 0.0);
+	}
+
+	@Test
+	public void givenRides_ShouldReturnInvoiceSummary() {
+		Ride[] rides = { new Ride(5.0, 10), new Ride(0.3, 1), new Ride(10.0, 20) };
+		InvoiceSummary summary;
+		try {
+			summary = cabInvoiceService.generateSummary(rides);
+			InvoiceSummary expectedSummary = new InvoiceSummary(3, 185.0);
+			assertEquals(expectedSummary, summary);
+		} catch (InvoiceServiceException e) {}
 	}
 }
