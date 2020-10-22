@@ -1,9 +1,11 @@
-package myrides;
+package repositoryservice;
 
 import java.util.List;
 
 import exception.RepositoryException;
 import exception.RepositoryException.ExceptionType;
+import myrides.Ride;
+import repository.RideRepository;
 
 public class RepositoryService {
 
