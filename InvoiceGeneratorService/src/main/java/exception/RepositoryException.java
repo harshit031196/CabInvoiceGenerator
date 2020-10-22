@@ -1,15 +1,14 @@
 package exception;
 
-public class InvoiceServiceException extends Exception {
-
+public class RepositoryException extends Exception {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -6166634641136644488L;
+	private static final long serialVersionUID = 1904264285663289727L;
 	public ExceptionType type;
-
+	
 	public enum ExceptionType {
-		NO_RIDE_TAKEN("Atleast 1 ride required for generating summary"), USER_NOT_FOUND("User not present in the repository");
+		USER_NOT_FOUND("User not present in the repository");
 
 		private String exceptionMessage;
 
@@ -20,8 +19,8 @@ public class InvoiceServiceException extends Exception {
 			return exceptionMessage;
 		}
 	}
-
-	public InvoiceServiceException(ExceptionType type) {
+	
+	public RepositoryException(ExceptionType type) {
 		super(type.getExceptionMessage());
 		this.type = type;
 	}
